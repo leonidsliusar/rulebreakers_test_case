@@ -30,7 +30,7 @@ services:
       - postgres_volume:/var/lib/postgresql/data
     restart: always
     ports:
-      - '5462:5432'
+      - '5460:5432'
     environment:
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: 'postgres'
