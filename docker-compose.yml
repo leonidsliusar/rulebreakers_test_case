@@ -4,6 +4,25 @@ volumes:
   postgres_volume:
 
 services:
+  django:
+    build:
+      dockerfile: Dockerfile
+    container_name: tasks
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - '8000:8000'
+    environment:
+      - DEBUG=1
+      - DB_HOST=postgres
+      - DB_NAME=tasks
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+      - SECRET_KEY=django-insecure-*2^ugf5tyf#7x!+v2tz6fv0r3rzy!%j(3+qurb)7f1g
+    networks:
+      - mynetwork
   postgres:
     image: postgres:15.3-alpine
     container_name: task_manager_db
@@ -11,8 +30,13 @@ services:
       - postgres_volume:/var/lib/postgresql/data
     restart: always
     ports:
-      - '5460:5432'
+      - '5462:5432'
     environment:
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: 'postgres'
       POSTGRES_DB: 'tasks'
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
