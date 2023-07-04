@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "rulebreakers-test-case"
+version = "0.1.0"
+description = ""
+authors = ["Leonid Sliusar <loslyusar@gmail.com>"]
+readme = "README.md"
+packages = [{include = "rulebreakers_test_case"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.3"
+psycopg2-binary = "^2.9.6"
+python-dotenv = "^1.0.0"
+djangorestframework = "^3.14.0"
+drf-yasg = "^1.21.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
